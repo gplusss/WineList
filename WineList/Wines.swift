@@ -36,4 +36,11 @@ class Wine {
         self.image = image
     }
     
+    
+    func title() -> String {
+        return "\(self.name)"
+    }
+    
 }
+
+

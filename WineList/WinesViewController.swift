@@ -7,22 +7,20 @@
 //
 
 import UIKit
-import FirebaseDatabase
 import Firebase
-
 
 class WinesViewController: UITableViewController {
     
     var wines:[Wine] = [
-        Wine(name: "Borsao", color: "red", type: "dry", grape: "Garnacha", wineMaker: "Bodegas Borsao", country: "Spain", region: "Aragon", description: "", size: "0,75", price: 100.00, image: "175317.jpg"),
-        Wine(name: "Borsao", color: "white", type: "sweet", grape: "Garnacha", wineMaker: "Bodegas Borsao", country: "Spain", region: "Aragon", description: "", size: "0,75", price: 100.00, image: "175317.jpg"),
-        Wine(name: "Borsao", color: "red", type: "dry", grape: "Garnacha", wineMaker: "Bodegas Borsao", country: "Spain", region: "Aragon", description: "", size: "0,75", price: 100.00, image: "175317.jpg"),
-        Wine(name: "Borsao", color: "red", type: "dry", grape: "Garnacha", wineMaker: "Bodegas Borsao", country: "Spain", region: "Aragon", description: "", size: "0,75", price: 100.00, image: "175317.jpg"),
-        Wine(name: "Borsao", color: "red", type: "dry", grape: "Garnacha", wineMaker: "Bodegas Borsao", country: "Spain", region: "Aragon", description: "", size: "0,75", price: 100.00, image: "175317.jpg"),
-        Wine(name: "Borsao", color: "red", type: "dry", grape: "Garnacha", wineMaker: "Bodegas Borsao", country: "Spain", region: "Aragon", description: "", size: "0,75", price: 100.00, image: "175317.jpg"),
-        Wine(name: "Borsao", color: "red", type: "dry", grape: "Garnacha", wineMaker: "Bodegas Borsao", country: "Spain", region: "Aragon", description: "", size: "0,75", price: 100.00, image: "175317.jpg"),
-        Wine(name: "Borsao", color: "red", type: "dry", grape: "Garnacha", wineMaker: "Bodegas Borsao", country: "Spain", region: "Aragon", description: "", size: "0,75", price: 100.00, image: "175317.jpg"),
-        Wine(name: "Borsao", color: "red", type: "dry", grape: "Garnacha", wineMaker: "Bodegas Borsao", country: "Spain", region: "Aragon", description: "", size: "0,75", price: 100.00, image: "175317.jpg")
+        Wine(name: "Borsao", color: "red", type: "dry", grape: "Garnacha", wineMaker: "Bodegas Borsao", country: "Spain", region: "Aragon", description: "Цвет вина глубокий, темный с рубиновыми бликами по ободу. Букет вина изумляет своим тонким балансом атоматов. Вино открывается с ноток спелых ягод, которые смешиваютя с дымными ньюансами и оттенками специй. За месяцы в бутылке, ароматы становятся все более сложными, напоминающими об эволюции вина - кожа, табак. Вкус полный, округлый, мягкий, гладкий благодаря своему длительному пребыванию в бутылке.", size: "0,75", price: 100.00, image: "175317.jpg"),
+        Wine(name: "Borsa", color: "white", type: "sweet", grape: "Garnacha", wineMaker: "Bodegas Borsao", country: "Spain", region: "Aragon", description: "Цвет вина глубокий, темный с рубиновыми бликами по ободу. Букет вина изумляет своим тонким балансом атоматов. Вино открывается с ноток спелых ягод, которые смешиваютя с дымными ньюансами и оттенками специй. За месяцы в бутылке, ароматы становятся все более сложными, напоминающими об эволюции вина - кожа, табак. Вкус полный, округлый, мягкий, гладкий благодаря своему длительному пребыванию в бутылке.", size: "0,75", price: 100.00, image: "175317.jpg"),
+        Wine(name: "Borsaghjgjo", color: "red", type: "dry", grape: "Garnacha", wineMaker: "Bodegas Borsao", country: "Spain", region: "Aragon", description: "Цвет вина глубокий, темный с рубиновыми бликами по ободу. Букет вина изумляет своим тонким балансом атоматов. Вино открывается с ноток спелых ягод, которые смешиваютя с дымными ньюансами и оттенками специй. За месяцы в бутылке, ароматы становятся все более сложными, напоминающими об эволюции вина - кожа, табак. Вкус полный, округлый, мягкий, гладкий благодаря своему длительному пребыванию в бутылке.", size: "0,75", price: 100.00, image: "175317.jpg"),
+        Wine(name: "Borsaodsd", color: "red", type: "dry", grape: "Garnacha", wineMaker: "Bodegas Borsao", country: "Spain", region: "Aragon", description: "Цвет вина глубокий, темный с рубиновыми бликами по ободу. Букет вина изумляет своим тонким балансом атоматов. Вино открывается с ноток спелых ягод, которые смешиваютя с дымными ньюансами и оттенками специй. За месяцы в бутылке, ароматы становятся все более сложными, напоминающими об эволюции вина - кожа, табак. Вкус полный, округлый, мягкий, гладкий благодаря своему длительному пребыванию в бутылке.", size: "0,75", price: 100.00, image: "175317.jpg"),
+        Wine(name: "Borsaollll", color: "red", type: "dry", grape: "Garnacha", wineMaker: "Bodegas Borsao", country: "Spain", region: "Aragon", description: "Цвет вина глубокий, темный с рубиновыми бликами по ободу. Букет вина изумляет своим тонким балансом атоматов. Вино открывается с ноток спелых ягод, которые смешиваютя с дымными ньюансами и оттенками специй. За месяцы в бутылке, ароматы становятся все более сложными, напоминающими об эволюции вина - кожа, табак. Вкус полный, округлый, мягкий, гладкий благодаря своему длительному пребыванию в бутылке.", size: "0,75", price: 100.00, image: "175317.jpg"),
+        Wine(name: "Borsaoawwa", color: "red", type: "dry", grape: "Garnacha", wineMaker: "Bodegas Borsao", country: "Spain", region: "Aragon", description: "Цвет вина глубокий, темный с рубиновыми бликами по ободу. Букет вина изумляет своим тонким балансом атоматов. Вино открывается с ноток спелых ягод, которые смешиваютя с дымными ньюансами и оттенками специй. За месяцы в бутылке, ароматы становятся все более сложными, напоминающими об эволюции вина - кожа, табак. Вкус полный, округлый, мягкий, гладкий благодаря своему длительному пребыванию в бутылке.", size: "0,75", price: 100.00, image: "175317.jpg"),
+        Wine(name: "Borsaopoiu", color: "red", type: "dry", grape: "Garnacha", wineMaker: "Bodegas Borsao", country: "Spain", region: "Aragon", description: "Цвет вина глубокий, темный с рубиновыми бликами по ободу. Букет вина изумляет своим тонким балансом атоматов. Вино открывается с ноток спелых ягод, которые смешиваютя с дымными ньюансами и оттенками специй. За месяцы в бутылке, ароматы становятся все более сложными, напоминающими об эволюции вина - кожа, табак. Вкус полный, округлый, мягкий, гладкий благодаря своему длительному пребыванию в бутылке.", size: "0,75", price: 100.00, image: "175317.jpg"),
+        Wine(name: "Borsaonbvb", color: "red", type: "dry", grape: "Garnacha", wineMaker: "Bodegas Borsao", country: "Spain", region: "Aragon", description: "Цвет вина глубокий, темный с рубиновыми бликами по ободу. Букет вина изумляет своим тонким балансом атоматов. Вино открывается с ноток спелых ягод, которые смешиваютя с дымными ньюансами и оттенками специй. За месяцы в бутылке, ароматы становятся все более сложными, напоминающими об эволюции вина - кожа, табак. Вкус полный, округлый, мягкий, гладкий благодаря своему длительному пребыванию в бутылке.", size: "0,75", price: 100.00, image: "175317.jpg"),
+        Wine(name: "Borsaojjj", color: "red", type: "dry", grape: "Garnacha", wineMaker: "Bodegas Borsao", country: "Spain", region: "Aragon", description: "Цвет вина глубокий, темный с рубиновыми бликами по ободу. Букет вина изумляет своим тонким балансом атоматов. Вино открывается с ноток спелых ягод, которые смешиваютя с дымными ньюансами и оттенками специй. За месяцы в бутылке, ароматы становятся все более сложными, напоминающими об эволюции вина - кожа, табак. Вкус полный, округлый, мягкий, гладкий благодаря своему длительному пребыванию в бутылке.", size: "0,75", price: 100.00, image: "175317.jpg")
         
     
     ]
@@ -63,8 +61,8 @@ class WinesViewController: UITableViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showDetail" {
-            if let indexPath = self.tableView.indexPathForSelectedRow {
-                let destinationController = segue.destinationViewController as! DetailViewController
+            let destinationController = segue.destinationViewController as! DetailViewController
+            if let indexPath = self.tableView.indexPathForSelectedRow {                
                 destinationController.wine = wines[indexPath.row]
             }
         }

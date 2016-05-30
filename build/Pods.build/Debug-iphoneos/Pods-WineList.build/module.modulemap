@@ -1,0 +1,6 @@
+framework module Pods_WineList {
+  umbrella header "Pods-WineList-umbrella.h"
+
+  export *
+  module * { export * }
+}
