@@ -17,6 +17,8 @@
 		4084D6B21CEC396300EDE0D3 /* Wines.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4084D6B11CEC396300EDE0D3 /* Wines.swift */; };
 		4084D6B41CEC3DFA00EDE0D3 /* WinesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4084D6B31CEC3DFA00EDE0D3 /* WinesViewController.swift */; };
 		4084D6B61CEC43E300EDE0D3 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4084D6B51CEC43E300EDE0D3 /* TableViewCell.swift */; };
+		40AF95971CFD2910004897C5 /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40AF95961CFD290F004897C5 /* UILabel.swift */; };
+		40AF95991CFDA477004897C5 /* BottleImageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40AF95981CFDA477004897C5 /* BottleImageProvider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +35,8 @@
 		4084D6B11CEC396300EDE0D3 /* Wines.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Wines.swift; sourceTree = "<group>"; };
 		4084D6B31CEC3DFA00EDE0D3 /* WinesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WinesViewController.swift; sourceTree = "<group>"; };
 		4084D6B51CEC43E300EDE0D3 /* TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		40AF95961CFD290F004897C5 /* UILabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
+		40AF95981CFDA477004897C5 /* BottleImageProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottleImageProvider.swift; sourceTree = "<group>"; };
 		9832E28AD037EF8D4E6BA381 /* Pods-WineList.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WineList.release.xcconfig"; path = "Pods/Target Support Files/Pods-WineList/Pods-WineList.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -88,6 +92,8 @@
 				4084D6A61CEC393600EDE0D3 /* Assets.xcassets */,
 				4084D6A81CEC393600EDE0D3 /* LaunchScreen.storyboard */,
 				4084D6AB1CEC393600EDE0D3 /* Info.plist */,
+				40AF95961CFD290F004897C5 /* UILabel.swift */,
+				40AF95981CFDA477004897C5 /* BottleImageProvider.swift */,
 			);
 			path = WineList;
 			sourceTree = "<group>";
@@ -225,7 +231,9 @@
 			files = (
 				4084D6B41CEC3DFA00EDE0D3 /* WinesViewController.swift in Sources */,
 				4084D6B61CEC43E300EDE0D3 /* TableViewCell.swift in Sources */,
+				40AF95971CFD2910004897C5 /* UILabel.swift in Sources */,
 				40129C8F1CF16AD500330AF3 /* DetailViewController.swift in Sources */,
+				40AF95991CFDA477004897C5 /* BottleImageProvider.swift in Sources */,
 				40122D7C1CF55BEA003A8AF6 /* DetailViewCell.swift in Sources */,
 				4084D6B21CEC396300EDE0D3 /* Wines.swift in Sources */,
 				4084D6A01CEC393600EDE0D3 /* AppDelegate.swift in Sources */,

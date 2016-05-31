@@ -7,25 +7,50 @@
 //
 
 import UIKit
+import ImageViewer
 
 class DetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-     @IBOutlet var tableview:UITableView!
+    @IBOutlet var tableview:UITableView!
     
     var wine:Wine!
+    
+    lazy var bottleButton: UIButton = {
+        let button = UIButton(type: .Custom)
+        button.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
+        button.addTarget(self, action: #selector(bottleImagePressed), forControlEvents: .TouchUpInside)
+        button.imageView?.contentMode = .ScaleAspectFit
+        button.backgroundColor = UIColor.whiteColor()
+        button.layer.cornerRadius = button.frame.size.width / 2
+        button.layer.masksToBounds = true
+        return button
+    }()
     
     
     @IBOutlet weak var imageView: UIImageView!
     
-   
     override func viewDidLoad() {
         super.viewDidLoad()
         title = wine.title()
         
-        self.imageView.image = UIImage(named: wine.image)
+        self.tableview.rowHeight = UITableViewAutomaticDimension;
+        self.tableview.estimatedRowHeight = 100;
         
+        let image = UIImage(named: wine.image);
+        bottleButton.setImage(image, forState: .Normal)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: bottleButton)
 
         // Do any additional setup after loading the view.
+    }
+    
+    func bottleImagePressed() {
+        let imageProvider = BottleImageProvider()
+        imageProvider.wines = [wine]
+        let buttonAssets = CloseButtonAssets(normal: UIImage(named:"close_normal")!, highlighted: UIImage(named: "close_highlighted"))
+        let configuration = ImageViewerConfiguration(imageSize: CGSize(width: 10, height: 10), closeButtonAssets: buttonAssets)
+        
+        let imageViewer = ImageViewer(imageProvider: imageProvider, configuration: configuration, displacedView: bottleButton.imageView!)
+        self.presentImageViewer(imageViewer)
     }
 
     override func didReceiveMemoryWarning() {
@@ -33,35 +58,29 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
         // Dispose of any resources that can be recreated.
     }
     
+    func makeAttributedFieldLabel(field: String) -> NSAttributedString {
+        let fieldAttributes = [NSFontAttributeName: UIFont.preferredFontForTextStyle(UIFontTextStyleTitle3), NSForegroundColorAttributeName: UIColor.purpleColor()]
+        
+        let fieldString = NSMutableAttributedString(string: field, attributes: fieldAttributes)
+        return fieldString
+    }
     
+    func makeAttributedValueLabel(value: String) -> NSAttributedString {
+        let valueAttributes = [NSFontAttributeName: UIFont.preferredFontForTextStyle(UIFontTextStyleSubheadline)]
+        
+        let valueString = NSMutableAttributedString(string: value, attributes: valueAttributes)
+        return valueString
+        
+        
+    }
     
         func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-            return 10
+            return 11
         }
         
         func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
             let cell = tableView.dequeueReusableCellWithIdentifier("detailCell", forIndexPath: indexPath) as! DetailViewCell
-        
-        
-        
-        func makeAttributedFieldLabel(field: String) -> NSAttributedString {
-            let fieldAttributes = [NSFontAttributeName: UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline), NSForegroundColorAttributeName: UIColor.purpleColor()]
             
-            let fieldString = NSMutableAttributedString(string: field, attributes: fieldAttributes)
-
-            
-            return fieldString
-    }
-        
-        func makeAttributedValueLabel(value: String) -> NSAttributedString {
-            let valueAttributes = [NSFontAttributeName: UIFont.preferredFontForTextStyle(UIFontTextStyleSubheadline)]
-            
-            let valueString = NSMutableAttributedString(string: value, attributes: valueAttributes)
-            return valueString
-            
-            
-        }
-       
         //MARK: свитч
         
         
@@ -89,25 +108,28 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
             cell.fieldLabel.attributedText = makeAttributedFieldLabel("REGION")
             cell.valueLabel.attributedText = makeAttributedValueLabel(wine.region)
         case 7:
-            cell.fieldLabel.attributedText = makeAttributedFieldLabel("DESCRIPTION")
-            cell.valueLabel.attributedText = makeAttributedValueLabel(wine.description)
-            cell.valueLabel.sizeToFit()
-        case 8:
             cell.fieldLabel.attributedText = makeAttributedFieldLabel("SIZE")
             cell.valueLabel.attributedText = makeAttributedValueLabel(wine.size)
-        case 9:
+        case 8:
             cell.fieldLabel.attributedText = makeAttributedFieldLabel("PRICE")
             cell.valueLabel.attributedText = makeAttributedValueLabel(String(wine.price) + " грн")
-
+        case 9:
+            cell.fieldLabel.attributedText = makeAttributedFieldLabel("STYLE")
+            cell.valueLabel.attributedText = makeAttributedValueLabel(wine.style)
+        case 10:
+            cell.fieldLabel.attributedText = makeAttributedFieldLabel("DESCRIPTION")
+            cell.valueLabel.attributedText = makeAttributedValueLabel(wine.description)
+            
         default:
             cell.fieldLabel.text = ""
             cell.valueLabel.text = ""
         }
-        
-       
+            
         return cell
+            
     }
     
+
 
     /*
     // MARK: - Navigation

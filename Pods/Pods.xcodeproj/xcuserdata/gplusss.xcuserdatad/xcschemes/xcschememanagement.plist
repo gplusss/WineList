@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>ImageViewer.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-WineList.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -12,7 +17,12 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>8944EB49A4C7B8C252E3C803EA5A4341</key>
+		<key>6814D3B36EAB7B9C402A196A758A7E0B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E057B4F6B970AC384207B2AE6D463E16</key>
 		<dict>
 			<key>primary</key>
 			<true/>

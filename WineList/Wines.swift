@@ -20,9 +20,10 @@ class Wine {
     var size: String = ""
     var price: Double = 0
     var image: String = ""
+    var style: String = ""
     
     
-    init(name: String, color: String, type: String, grape: String, wineMaker: String, country: String, region: String, description: String, size: String, price: Double, image: String) {
+    init(name: String, color: String, type: String, grape: String, wineMaker: String, country: String, region: String, description: String, size: String, price: Double, image: String, style: String) {
         self.name = name
         self.color = color
         self.type = type
@@ -34,6 +35,7 @@ class Wine {
         self.size = size
         self.price = price
         self.image = image
+        self.style = style
     }
     
     

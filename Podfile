@@ -5,5 +5,6 @@ use_frameworks!
 
 target 'WineList' do
 	pod 'Firebase/Database'
+    pod 'ImageViewer'
 end
 
