@@ -11,7 +11,8 @@ import Foundation
 class Wine {
     var name: String = ""
     var color: String = ""
-    var type: String = "" //sweet, dry, etc
+    var sweetness: String = "" //sweet, dry, etc
+    var type:  String = ""
     var grape: String = ""
     var wineMaker: String = ""
     var country: String = ""
@@ -23,9 +24,10 @@ class Wine {
     var style: String = ""
     
     
-    init(name: String, color: String, type: String, grape: String, wineMaker: String, country: String, region: String, description: String, size: String, price: Double, image: String, style: String) {
+    init(name: String, color: String, sweetness: String, type: String, grape: String, wineMaker: String, country: String, region: String, description: String, size: String, price: Double, image: String, style: String) {
         self.name = name
         self.color = color
+        self.sweetness = sweetness
         self.type = type
         self.grape = grape
         self.wineMaker = wineMaker

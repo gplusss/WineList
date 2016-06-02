@@ -7,31 +7,55 @@
 //
 
 import UIKit
+import Foundation
 import Firebase
+
+let baseURL = "https://winelistvillagio.firebaseio.com"
+
 
 class WinesViewController: UITableViewController {
     
+    
+    let searchController = UISearchController(searchResultsController: nil)
+    var filteredWines = [Wine]()
+    
+    
     var wines:[Wine] = [
-        Wine(name: "Borsao", color: "red", type: "dry", grape: "Garnacha", wineMaker: "Bodegas Borsao", country: "Испания", region: "Aragon", description: "Цвет вина глубокий, темный с рубиновыми бликами по ободу. Букет вина изумляет своим тонким балансом атоматов. Вино открывается с ноток спелых ягод, которые смешиваютя с дымными ньюансами и оттенками специй. За месяцы в бутылке, ароматы становятся все более сложными, напоминающими об эволюции вина - кожа, табак. Вкус полный, округлый, мягкий, гладкий благодаря своему длительному пребыванию в бутылке.", size: "0,75", price: 100.00, image: "175317.jpg",style: "123"),
-        Wine(name: "Miol Prosecco Treviso", color: "white", type: "dry", grape: "Просеко", wineMaker: "Bortolomiol", country: "Italy", region: "Veneto", description: "Оптимальный баланс сладости, деликатно-фруктовый аромат, идеальный аперитив. Отлично подойдет к овощным супам.", size: "0,75", price: 379.35, image: "189809.jpg",style: ""),
-        Wine(name: "Sauvignon Blanc Vicar's Choice", color: "white", type: "dry", grape: "Совиньйон Блан", wineMaker: "Saint Clair", country: "Новая Зеландия ", region: "Мальборо", description: "Цвет бледной соломы с зелеными оттенками. Воодушевляющий аромат маракуйи, черной смородины, грейпфрута, крыжовника и крапивы с освежающей основой минеральных оттенков. Вкус легкотельный, свежий с тонами черной смородины и грейпфрута. Приятные минеральные оттенки приводят к длительному затяжному финалу.", size: "0,75", price: 299.0, image: "184049-2.jpg",style: ""),
-        Wine(name: "La Solatia Pinot Grigio", color: "white", type: "dry", grape: "Пино Гриджо", wineMaker: "Ruffino", country: "Италия", region: "Тоскана", description: "Цвет глубокий соломенно-желтый со светло-золотыми оттенками. Букет обогащен приятными нотками печенья, тонами груш и маленьких зеленых слив. Во вкусе типичные особенности виноградных сортов выступают на передний план фруктовыми нотками груш. Вино представляет хорошую вкусовую гармонию, благодаря своей округлости, хорошо уравновешенной превосходной свежестью. Финал вкуса обширный и длительный с изящными минеральными оттенками. Послевкусие устойчивое, с ведущими оттенками миндаля.", size: "0,75", price: 269.00, image: "174220.jpg",style: ""),
-        Wine(name: "La Vieille Ferme", color: "red", type: "dry", grape: "Кариньян (15), Сенсо (15), Сира (20), Гренаш (50)", wineMaker: "La Vieille Ferme", country: "Франция", region: "Долина Роны", description: "Цвет насыщенный вишневый. Богатый аромат спелых фруктов и специй. Во вкусе красные ягоды, черная смородина и ежевика, специи и свежее послевкусие.", size: "0,75", price: 199.00, image: "173642-2.jpg",style: ""),
-        Wine(name: "Castillo San Simon Reserva", color: "red", type: "dry", grape: "Темпранильо (40), Монастрель (60)", wineMaker: "Castillo San Simon", country: "Испания", region: "Мурсия", description: "Вино интенсивного рубинового цвета. Вкус хорошо сбалансирован, аромат напоминает нотки фруктов. Имеет терпкое послевкусие.", size: "0,75", price: 149.00, image: "172896-2.jpg",style: ""),
-        Wine(name: "Chateau de Lamarque, 2005", color: "red", type: "dry", grape: "", wineMaker: "Chateau de Lamarque", country: "Франция", region: "Бордо", description: "", size: "0,75", price: 650.00, image: "175225-2.jpg",style: ""),
-        Wine(name: "Fonseca 10yo Tawny", color: "red", type: "sweet", grape: "", wineMaker: "Fonseca", country: "Португалия", region: "Доуро", description: "Портвейн янтарного цвета с малиновым оттенком и ароматом спелых фруктов, меда и специй. Мягкое, шелковистое вино с утонченными древесными нюансами, сбалансированными освежающей кислотностью и вяжущими танинами, которые переходят в длительное, элегантное послевкусие.", size: "0,75", price: 599.00, image: "172973-2.jpg",style: ""),
-        Wine(name: "Chateau Citran, 2010", color: "red", type: "dry", grape: "Каберне Совиньйон (0), Мерло (0)", wineMaker: "Chateau Citran", country: "Франция", region: "Бордо", description: "", size: "0,75", price: 350.00, image: "197333.jpg",style: "")
+        Wine(name: "Freixenet Roger D'anoia Brut", color: "white", sweetness: "dry", type: "игристое", grape: "макабео, паррельяда, щарельо", wineMaker: "Freixenet", country: "Spain", region: "Cava", description: "Первое брожение происходит при контролируемой температуре в емкостях из нержавеющей стали в течение 10-12 дней, после чего вино разливается и вторичное брожение происходит в бутылке.", size: "0,75", price: 427.00, image: "roger_danoia_cava__brut2.jpg",style: "цветочное"),
+        Wine(name: "Lanson Ivory Label", color: "white", sweetness: "demi-sec", type: "игристое", grape: "пино нуар, шардоне, пино менье", wineMaker: "Lanson", country: "France", region: "Champagne", description: "Шампанское соломенно-желтого цвета с легкими золотыми отблесками. В букете шампанского ароматы зрелых фруктов, смешанных с нотками корицы и меда. В округлом и плотном, гармоничном вкусе шампанского доминируют нотки спелого персика и груши.", size: "0,75", price: 677.00, image: "___27935_big.jpg",style: "цветочное"),
+        Wine(name: "Piper Heidsieck Brut", color: "white", sweetness: "dry", type: "игристое", grape: "пино нуар, пино менье, шардоне", wineMaker: "Piper-Heidsieck", country: "France", region: "Champagne", description: "Напиток отличается нежным золотистым цветом и удивительным союзом изысканности, типичной для сухого шампанского, и неудержимой жизнерадостности, характерной для стиля Пайпер Хайдсик. Созданное из ягод, собранных в 50 отборных виноградниках, и созревавшее долгие месяцы в меловых погребах, шампанское Пайпер Хайдсик Кюве Брют гармонично сочетает в своем букете ароматы весенних цветов, ноты спелых яблок и груш, освежающие цитрусовые тона.", size: "0,75", price: 1153.00, image: "4324.jpg",style: "орехово-сливочное"),
+        Wine(name: "Zonin Prosecco", color: "white", sweetness: "dry", type: "игристое", grape: "просекко", wineMaker: "Zonin", country: "Italy", region: "Veneto", description: "Цвет бледно-желтый с зеленоватыми оттенками. Аромат яркий фруктовый аромат с нотами цветов глицинии. ВкусХорошо сбалансированный, свежий вкус яблочно-миндального пирога.", size: "0,2", price: 109.00, image: "zonin_0_2_liter_3831__67808_big.jpg",style: "цветочное"),
+        Wine(name: "Zonin Prosecco", color: "white", sweetness: "dry", type: "игристое", grape: "просекко", wineMaker: "Zonin", country: "Italy", region: "Veneto", description: "Цвет бледно-желтый с зеленоватыми оттенками. Аромат яркий фруктовый аромат с нотами цветов глицинии. Вкус хорошо сбалансированный, свежий вкус яблочно-миндального пирога.", size: "0,75", price: 289.00, image: "prosecco_spumante_big_7ec78fcbfb407f46adadd828db0b46a5__21910_big.jpg",style: "цветочное"),
+        Wine(name: "Dal Bello Prosecco Don Gallo Brut", color: "white", sweetness: "dry", type: "игристое", grape: "просекко", wineMaker: "Dal Bello", country: "Italy", region: "Veneto", description: "Цвет светло-соломенный цвет с зеленоватыми бликами со стойким муссом.Тонкий аромат зеленого яблока и белых цветов с намеком на цитрусы, Вкус питкий и свежий вкус с мягким перляжем.", size: "0,75", price: 549.00, image: "1461677900_49956.jpg",style: "цветочное"),
+        Wine(name: "Filipetti Prosecco", color: "white", sweetness: "dry", type: "игристое", grape: "просекко", wineMaker: "Valsa Nuovo Perlino", country: "Italy", region: "Veneto", description: "Цвет желтый с зеленоватыми отблесками и деликатным и стойким перляжем. Аромат освежающий с приятными ароматными нотами. Вкус сбалансированный, мягкий и полный со стойким послевкусием", size: "0,75", price: 446.00, image: "1404388046_50712.jpg",style: "цветочное"),
+        Wine(name: "Anjos Vinho Verde", color: "white", sweetness: "semi-dry", type: "шипучее", grape: "Лоурейро, Тражадура и Аринто", wineMaker: "ANJOS", country: "Portugal", region: "Vinho Verde", description: "Вино соломенного цвета с элегантным фруктовым ароматом и молодым свежим вкусом с легкой кислинкой. Рекомендуется подавать при температуре +8 - +10о С. Хорошо сочетается с рыбой, морепродуктами и мясными блюдами.", size: "0,75", price: 249.00, image: "anjos-de-portigal-vino-verde-330x550-884203808.jpg",style: "цветочное"),
+        Wine(name: "Byass Sherry Elegante Fino", color: "white", sweetness: "dry", type: "крепленое", grape: "паломино", wineMaker: "Gonzalez Byass", country: "Spain", region: "Jerez de la Frontera", description: "", size: "0,75", price: 299.00, image: "gonzalez-byass-elegante-fino-sherry.jpg",style: ""),
+        Wine(name: "Alvaro Domecq Manzanilla La Jaka", color: "white", sweetness: "dry", type: "крепленое", grape: "паломино", wineMaker: "Bodegas Alvaro Domecq", country: "Spain", region: "Andalusia", description: "Округлый и гладкий херес мансанилья красивого соломенно-золотого цвета с деликатным, мягким ароматом фруктов – яблок и абрикоса, сена, ромашки и выраженными тонами миндаля. Во вкусе довольно молодое и питкое, в атаке чрезвычайно фруктовое, напоминает тихое белое вино, становится суше, более характерным и напористым, с легкой травяной горчинкой и солеными нотами. Послевкусие довольно продолжительное с пикантными тонами.", size: "0,75", price: 399.0, image: "174507.jpg", style: "")
         
     
     ]
     
+    func filterContentForSearchText(search: String, scope: String = "ALL") {
+        filteredWines = wines.filter { wine in
+            return wine.country.lowercaseString.containsString(search.lowercaseString) || wine.color.lowercaseString.containsString(search.lowercaseString) || wine.type.lowercaseString.containsString(search.lowercaseString) || wine.grape.lowercaseString.containsString(search.lowercaseString) || wine.wineMaker.lowercaseString.containsString(search.lowercaseString) || wine.name.lowercaseString.containsString(search.lowercaseString) || wine.region.lowercaseString.containsString(search.lowercaseString) || wine.style.lowercaseString.containsString(search.lowercaseString) || wine.sweetness.lowercaseString.containsString(search.lowercaseString)
+        }
+            tableView.reloadData()
+        }
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        searchController.searchResultsUpdater = self
+        searchController.dimsBackgroundDuringPresentation = false
+        definesPresentationContext = true
+        tableView.tableHeaderView = searchController.searchBar
+        
 
         // Do any additional setup after loading the view.
     }
+    
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -40,6 +64,10 @@ class WinesViewController: UITableViewController {
     
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if searchController.active && searchController.searchBar.text != "" {
+            return filteredWines.count
+        }
+       
         return wines.count
     }
     
@@ -47,7 +75,15 @@ class WinesViewController: UITableViewController {
         
         let identifer = "Cell"
         let cell = tableView.dequeueReusableCellWithIdentifier(identifer, forIndexPath: indexPath) as! TableViewCell
-        let wine = wines[indexPath.row]
+        let wine: Wine
+        
+        if searchController.active && searchController.searchBar.text != "" {
+            wine = filteredWines[indexPath.row]
+        }
+            else {
+                wine = self.wines[indexPath.row]
+            }
+        
         
         cell.nameLabel.text = wine.name
         cell.colorLabel.text = wine.color
@@ -60,6 +96,7 @@ class WinesViewController: UITableViewController {
         return cell
     }
     
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showDetail" {
             let destinationController = segue.destinationViewController as! DetailViewController
@@ -70,14 +107,16 @@ class WinesViewController: UITableViewController {
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
+
+    extension WinesViewController: UISearchResultsUpdating {
+        func updateSearchResultsForSearchController(searchController: UISearchController) {
+            filterContentForSearchText(searchController.searchBar.text!)
+        }
+        
+    }
+
+
+
+
+

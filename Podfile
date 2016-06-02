@@ -4,6 +4,7 @@ platform :ios, '8.0'
 use_frameworks!
 
 target 'WineList' do
+	pod 'Firebase'
 	pod 'Firebase/Database'
     pod 'ImageViewer'
 end
