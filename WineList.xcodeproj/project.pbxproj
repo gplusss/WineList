@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		0FE0B3539875875C784039E3 /* Pods_WineList.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15779A47E25613E866E42458 /* Pods_WineList.framework */; };
+		4001414E1D0A8C68009458D4 /* HeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4001414D1D0A8C68009458D4 /* HeaderCell.swift */; };
+		400141521D0ACB87009458D4 /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400141511D0ACB87009458D4 /* HTTPClient.swift */; };
 		400B90FB1CFE8AEA00618ADE /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400B90FA1CFE8AEA00618ADE /* DataService.swift */; };
 		40122D7C1CF55BEA003A8AF6 /* DetailViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40122D7B1CF55BEA003A8AF6 /* DetailViewCell.swift */; };
 		40129C8F1CF16AD500330AF3 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40129C8E1CF16AD500330AF3 /* DetailViewController.swift */; };
@@ -25,6 +27,8 @@
 /* Begin PBXFileReference section */
 		15779A47E25613E866E42458 /* Pods_WineList.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WineList.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A55176A5DA7661EABC63BF5 /* Pods-WineList.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WineList.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WineList/Pods-WineList.debug.xcconfig"; sourceTree = "<group>"; };
+		4001414D1D0A8C68009458D4 /* HeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderCell.swift; sourceTree = "<group>"; };
+		400141511D0ACB87009458D4 /* HTTPClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
 		400B90FA1CFE8AEA00618ADE /* DataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 		40122D7B1CF55BEA003A8AF6 /* DetailViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewCell.swift; sourceTree = "<group>"; };
 		40129C8E1CF16AD500330AF3 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
@@ -90,6 +94,7 @@
 				4084D6B11CEC396300EDE0D3 /* Wines.swift */,
 				4084D6B51CEC43E300EDE0D3 /* TableViewCell.swift */,
 				40122D7B1CF55BEA003A8AF6 /* DetailViewCell.swift */,
+				4001414D1D0A8C68009458D4 /* HeaderCell.swift */,
 				4084D6A31CEC393600EDE0D3 /* Main.storyboard */,
 				4084D6A61CEC393600EDE0D3 /* Assets.xcassets */,
 				4084D6A81CEC393600EDE0D3 /* LaunchScreen.storyboard */,
@@ -97,6 +102,7 @@
 				40AF95961CFD290F004897C5 /* UILabel.swift */,
 				40AF95981CFDA477004897C5 /* BottleImageProvider.swift */,
 				400B90FA1CFE8AEA00618ADE /* DataService.swift */,
+				400141511D0ACB87009458D4 /* HTTPClient.swift */,
 			);
 			path = WineList;
 			sourceTree = "<group>";
@@ -234,10 +240,12 @@
 			files = (
 				400B90FB1CFE8AEA00618ADE /* DataService.swift in Sources */,
 				4084D6B41CEC3DFA00EDE0D3 /* WinesViewController.swift in Sources */,
+				400141521D0ACB87009458D4 /* HTTPClient.swift in Sources */,
 				4084D6B61CEC43E300EDE0D3 /* TableViewCell.swift in Sources */,
 				40AF95971CFD2910004897C5 /* UILabel.swift in Sources */,
 				40129C8F1CF16AD500330AF3 /* DetailViewController.swift in Sources */,
 				40AF95991CFDA477004897C5 /* BottleImageProvider.swift in Sources */,
+				4001414E1D0A8C68009458D4 /* HeaderCell.swift in Sources */,
 				40122D7C1CF55BEA003A8AF6 /* DetailViewCell.swift in Sources */,
 				4084D6B21CEC396300EDE0D3 /* Wines.swift in Sources */,
 				4084D6A01CEC393600EDE0D3 /* AppDelegate.swift in Sources */,

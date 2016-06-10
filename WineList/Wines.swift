@@ -7,8 +7,9 @@
 //
 
 import Foundation
+import ObjectMapper
 
-class Wine {
+class Wine: Mappable {
     var name: String = ""
     var color: String = ""
     var sweetness: String = "" //sweet, dry, etc
@@ -40,6 +41,25 @@ class Wine {
         self.style = style
     }
     
+    required init?(_ map: Map){
+        
+    }
+    
+    func mapping(map: Map) {
+        name            <- map["name"]
+        color           <- map["color"]
+        sweetness       <- map["sweetness"]
+        type            <- map["type"]
+        grape           <- map["grape"]
+        wineMaker       <- map["wineMaker"]
+        country         <- map["country"]
+        region          <- map["region"]
+        description     <- map["description"]
+        size            <- map["size"]
+        price           <- map["price"]
+        image           <- map["image"]
+        style           <- map["style"]
+    }
     
     func title() -> String {
         return "\(self.name)"

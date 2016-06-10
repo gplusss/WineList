@@ -7,5 +7,7 @@ target 'WineList' do
 	pod 'Firebase'
 	pod 'Firebase/Database'
     pod 'ImageViewer'
+    pod 'Alamofire', '~> 3.4'
+    pod 'AlamofireObjectMapper'
 end
 
