@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import ImageViewer
 
 class DetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
@@ -16,18 +15,18 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
     var wine:Wine!
     
     lazy var bottleButton: UIButton = {
-        let button = UIButton(type: .Custom)
+        let button = UIButton(type: .custom)
         button.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
-        button.addTarget(self, action: #selector(bottleImagePressed), forControlEvents: .TouchUpInside)
-        button.imageView?.contentMode = .ScaleAspectFit
-        button.backgroundColor = UIColor.whiteColor()
+        //button.addTarget(self, action: #selector(bottleImagePressed), for: .touchUpInside)
+        button.imageView?.contentMode = .scaleAspectFit
+        button.backgroundColor = UIColor.white
         button.layer.cornerRadius = button.frame.size.width / 2
         button.layer.masksToBounds = true
         return button
     }()
     
     
-    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var imageView: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,37 +35,37 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
         self.tableview.rowHeight = UITableViewAutomaticDimension;
         self.tableview.estimatedRowHeight = 100;
         
-        let image = UIImage(named: wine.image);
-        bottleButton.setImage(image, forState: .Normal)
+        let image = UIImage(named: wine.image)
+        bottleButton.setImage(image, for: UIControlState())
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: bottleButton)
 
         // Do any additional setup after loading the view.
     }
     
-    func bottleImagePressed() {
-        let imageProvider = BottleImageProvider()
-        imageProvider.wines = [wine]
-        let buttonAssets = CloseButtonAssets(normal: UIImage(named:"close_normal")!, highlighted: UIImage(named: "close_highlighted"))
-        let configuration = ImageViewerConfiguration(imageSize: CGSize(width: 10, height: 10), closeButtonAssets: buttonAssets)
-        
-        let imageViewer = ImageViewer(imageProvider: imageProvider, configuration: configuration, displacedView: bottleButton.imageView!)
-        self.presentImageViewer(imageViewer)
-    }
+//    func bottleImagePressed() {
+//        let imageProvider = BottleImageProvider()
+//        imageProvider.wines = [wine]
+//        let buttonAssets = CloseButtonAssets(normal: UIImage(named:"close_normal")!, highlighted: UIImage(named: "close_highlighted"))
+//        let configuration = ImageViewerConfiguration(imageSize: CGSize(width: 10, height: 10), closeButtonAssets: buttonAssets)
+//        
+//        let imageViewer = ImageViewer(imageProvider: imageProvider, configuration: configuration, displacedView: bottleButton.imageView!)
+//        self.presentImageViewer(imageViewer)
+//    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-    func makeAttributedFieldLabel(field: String) -> NSAttributedString {
-        let fieldAttributes = [NSFontAttributeName: UIFont.preferredFontForTextStyle(UIFontTextStyleTitle3), NSForegroundColorAttributeName: UIColor.purpleColor()]
+    func makeAttributedFieldLabel(_ field: String) -> NSAttributedString {
+        let fieldAttributes = [NSFontAttributeName: UIFont.preferredFont(forTextStyle: UIFontTextStyle.title3), NSForegroundColorAttributeName: UIColor.purple]
         
         let fieldString = NSMutableAttributedString(string: field, attributes: fieldAttributes)
         return fieldString
     }
     
-    func makeAttributedValueLabel(value: String) -> NSAttributedString {
-        let valueAttributes = [NSFontAttributeName: UIFont.preferredFontForTextStyle(UIFontTextStyleSubheadline)]
+    func makeAttributedValueLabel(_ value: String) -> NSAttributedString {
+        let valueAttributes = [NSFontAttributeName: UIFont.preferredFont(forTextStyle: UIFontTextStyle.subheadline)]
         
         let valueString = NSMutableAttributedString(string: value, attributes: valueAttributes)
         return valueString
@@ -74,16 +73,13 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
         
     }
     
-        func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
             return 11
         }
         
-        func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-            let cell = tableView.dequeueReusableCellWithIdentifier("detailCell", forIndexPath: indexPath) as! DetailViewCell
-            
-        //MARK: свитч
-        
-        
+        func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "detailCell", for: indexPath) as! DetailViewCell
+
         switch indexPath.row {
         case 0:
             cell.fieldLabel.attributedText = makeAttributedFieldLabel("NAME")
@@ -128,17 +124,4 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
         return cell
             
     }
-    
-
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

@@ -9,22 +9,6 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Pods/ObjectMapper/ObjectMapper/Core/Operators.swift"
-            timestampString = "487248758.742745"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "535"
-            endingLineNumber = "535"
-            landmarkName = "&lt;-(_:_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "Pods/ObjectMapper/ObjectMapper/Core/FromJSON.swift"
             timestampString = "487248780.442881"
             startingColumnNumber = "9223372036854775807"
@@ -81,6 +65,38 @@
             endingLineNumber = "37"
             landmarkName = "ObjectMapperSerializer(_:mapToObject:)"
             landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(extension in AlamofireObjectMapper):Alamofire.DataRequest.ErrorCode.init (rawValue : Swift.Int) -&gt; Swift.Optional&lt;(extension in AlamofireObjectMapper):Alamofire.DataRequest.ErrorCode&gt;"
+                  moduleName = "AlamofireObjectMapper"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/gplusss/Documents/iOS-dev/WineList/Pods/AlamofireObjectMapper/AlamofireObjectMapper/AlamofireObjectMapper.swift"
+                  timestampString = "501370921.134237"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "37"
+                  endingLineNumber = "37"
+                  offsetFromSymbolStart = "39">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(extension in AlamofireObjectMapper):Alamofire.DataRequest.ErrorCode.rawValue.getter : Swift.Int"
+                  moduleName = "AlamofireObjectMapper"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/gplusss/Documents/iOS-dev/WineList/Pods/AlamofireObjectMapper/AlamofireObjectMapper/AlamofireObjectMapper.swift"
+                  timestampString = "501370921.137397"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "37"
+                  endingLineNumber = "37"
+                  offsetFromSymbolStart = "53">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

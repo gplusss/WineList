@@ -12,7 +12,7 @@ import ObjectMapper
 class Wine: Mappable {
     var name: String = ""
     var color: String = ""
-    var sweetness: String = "" //sweet, dry, etc
+    var sweetness: String = ""
     var type:  String = ""
     var grape: String = ""
     var wineMaker: String = ""
@@ -20,7 +20,7 @@ class Wine: Mappable {
     var region: String = ""
     var description: String = ""
     var size: String = ""
-    var price: Double = 0
+    var price: Double = 0.0
     var image: String = ""
     var style: String = ""
     
@@ -41,7 +41,7 @@ class Wine: Mappable {
         self.style = style
     }
     
-    required init?(_ map: Map){
+    required init?(map: Map){
         
     }
     
