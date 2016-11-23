@@ -4,7 +4,8 @@ platform :ios, '9.0'
 use_frameworks!
 
 target 'WineList' do
-    pod 'Alamofire', '~> 4.0.1'
+    pod 'Alamofire'
     pod 'AlamofireObjectMapper'
+    pod 'Kingfisher'
 end
 

@@ -10,8 +10,8 @@ import Foundation
 import UIKit
 
 class DetailViewCell: UITableViewCell {
-        @IBOutlet weak var fieldLabel:UILabel!
-        @IBOutlet weak var valueLabel:UILabel!
+        @IBOutlet weak var fieldLabel: UILabel!
+        @IBOutlet weak var valueLabel: UILabel!
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)

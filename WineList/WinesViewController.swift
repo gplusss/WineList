@@ -10,6 +10,7 @@ import UIKit
 import Foundation
 import Alamofire
 import AlamofireObjectMapper
+import Kingfisher
 
     let baseURL = "https://winelistvillagio.firebaseio.com"
     let headers = [
@@ -17,13 +18,11 @@ import AlamofireObjectMapper
         "Accept": "application/json"
     ]
     
-    
     let URL = "https://villaggio-4e2e.restdb.io/rest/winelist"
 
 
 class WinesViewController: UITableViewController {
     let updateIndicator = UIRefreshControl()
-    
     let searchController = UISearchController(searchResultsController: nil)
     var filteredWines = [Wine]()
     
@@ -72,9 +71,12 @@ class WinesViewController: UITableViewController {
         tableView.addSubview(updateIndicator)
         updateIndicator.attributedTitle = NSAttributedString(string: "Идет обновление...")
         updateIndicator.addTarget(self, action: #selector(WinesViewController.didRefreshData), for: UIControlEvents.valueChanged)
+        
+        print(URL)
 
         Alamofire.request(URL, method: .get, headers: headers).responseArray { (response: DataResponse<[Wine]>) in
             guard let wines = response.result.value else { return }
+            
             
             self.wines = wines
             self.tableView.reloadData()
@@ -107,18 +109,23 @@ class WinesViewController: UITableViewController {
             else {
                 wine = self.wines[indexPath.row]
             }
-                
+        
         cell.nameLabel.text = wine.name
         cell.colorLabel.text = wine.color
         cell.priceLabel.text = String(wine.price) + " грн"
         cell.countryLabel.text = wine.country
         cell.typeLabel.text = wine.type
-        cell.imageLabel.image = UIImage(named: wine.image)
+        
+        let urlString = "https://villaggio-4e2e.restdb.io/media/" + (wine.image?[0])!
+        let url = NSURL(string: urlString)
+        let imgResource =  ImageResource(downloadURL: url as! URL)
+        
+        cell.imageLabel?.kf.setImage(with: imgResource)
         
         
         return cell
     }
-    
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showDetail" {
             let destinationController = segue.destination as! DetailViewController

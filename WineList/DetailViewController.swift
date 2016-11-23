@@ -35,8 +35,8 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
         self.tableview.rowHeight = UITableViewAutomaticDimension;
         self.tableview.estimatedRowHeight = 100;
         
-        let image = UIImage(named: wine.image)
-        bottleButton.setImage(image, for: UIControlState())
+        //let image = UIImage(named: wine.image)
+        //bottleButton.setImage(image, for: UIControlState())
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: bottleButton)
 
         // Do any additional setup after loading the view.

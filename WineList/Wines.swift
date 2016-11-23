@@ -21,27 +21,10 @@ class Wine: Mappable {
     var description: String = ""
     var size: String = ""
     var price: Double = 0.0
-    var image: String = ""
+    var image : [String]?
     var style: String = ""
     
-    
-    init(name: String, color: String, sweetness: String, type: String, grape: String, wineMaker: String, country: String, region: String, description: String, size: String, price: Double, image: String, style: String) {
-        self.name = name
-        self.color = color
-        self.sweetness = sweetness
-        self.type = type
-        self.grape = grape
-        self.wineMaker = wineMaker
-        self.country = country
-        self.region = region
-        self.description = description
-        self.size = size
-        self.price = price
-        self.image = image
-        self.style = style
-    }
-    
-    required init?(map: Map){
+    required init?(map: Map) {
         
     }
     
@@ -51,7 +34,7 @@ class Wine: Mappable {
         sweetness       <- map["sweetness"]
         type            <- map["type"]
         grape           <- map["grape"]
-        wineMaker       <- map["wineMaker"]
+        wineMaker       <- map["wine maker"]
         country         <- map["country"]
         region          <- map["region"]
         description     <- map["description"]
