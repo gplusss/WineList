@@ -149,21 +149,28 @@
                                             <rect key="frame" x="0.0" y="0.0" width="343" height="70"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Value" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xq6-qs-FJE">
-                                                    <rect key="frame" x="172" y="8" width="150" height="20.5"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Field" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MPp-tx-kKA">
-                                                    <rect key="frame" x="8" y="12" width="150" height="45"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Field" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MPp-tx-kKA">
+                                                    <rect key="frame" x="8" y="6" width="263" height="14.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Value" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xq6-qs-FJE">
+                                                    <rect key="frame" x="293" y="8" width="42" height="54"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="MPp-tx-kKA" firstAttribute="top" secondItem="8UO-OY-rNg" secondAttribute="top" constant="6" id="EPL-ki-xZA"/>
+                                                <constraint firstItem="MPp-tx-kKA" firstAttribute="leading" secondItem="8UO-OY-rNg" secondAttribute="leading" constant="8" id="XDW-5i-YxH"/>
+                                                <constraint firstAttribute="topMargin" secondItem="Xq6-qs-FJE" secondAttribute="top" id="bvW-Xn-tQh"/>
+                                                <constraint firstItem="Xq6-qs-FJE" firstAttribute="trailing" secondItem="8UO-OY-rNg" secondAttribute="trailingMargin" id="dDR-VI-ole"/>
+                                                <constraint firstItem="Xq6-qs-FJE" firstAttribute="top" secondItem="8UO-OY-rNg" secondAttribute="topMargin" id="i1h-qW-BLB"/>
+                                                <constraint firstItem="Xq6-qs-FJE" firstAttribute="leading" secondItem="MPp-tx-kKA" secondAttribute="trailing" constant="22" id="jcb-Y4-jKy"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="Xq6-qs-FJE" secondAttribute="bottom" id="rPW-UN-z1w"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="fieldLabel" destination="MPp-tx-kKA" id="GQ8-6Z-LBn"/>

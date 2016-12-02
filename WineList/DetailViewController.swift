@@ -33,29 +33,21 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
         super.viewDidLoad()
         title = wine.title()
         
-        self.tableview.rowHeight = UITableViewAutomaticDimension;
-        self.tableview.estimatedRowHeight = 100;
-        
+        self.tableview.rowHeight = UITableViewAutomaticDimension
+        self.tableview.estimatedRowHeight = 36
+//          tableView.estimatedRowHeight = 36
+//          tableView.rowHeight = UITableViewAutomaticDimension
         
         let urlString = "https://villaggio-4e2e.restdb.io/media/" + (wine.image?[0])!
         let url = NSURL(string: urlString)
         let imgResource =  ImageResource(downloadURL: url as! URL)
         bottleButton.kf.setImage(with: imgResource, for: UIControlState.normal)
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: bottleButton)
+        
 
         // Do any additional setup after loading the view.
     }
     
-//    func bottleImagePressed() {
-//        let imageProvider = BottleImageProvider()
-//        imageProvider.wines = [wine]
-//        let buttonAssets = CloseButtonAssets(normal: UIImage(named:"close_normal")!, highlighted: UIImage(named: "close_highlighted"))
-//        let configuration = ImageViewerConfiguration(imageSize: CGSize(width: 10, height: 10), closeButtonAssets: buttonAssets)
-//        
-//        let imageViewer = ImageViewer(imageProvider: imageProvider, configuration: configuration, displacedView: bottleButton.imageView!)
-//        self.presentImageViewer(imageViewer)
-//    }
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -123,6 +115,7 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
         default:
             cell.fieldLabel.text = ""
             cell.valueLabel.text = ""
+
         }
             
         return cell
