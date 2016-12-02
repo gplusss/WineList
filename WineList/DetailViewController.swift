@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class DetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
@@ -35,8 +36,11 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
         self.tableview.rowHeight = UITableViewAutomaticDimension;
         self.tableview.estimatedRowHeight = 100;
         
-        //let image = UIImage(named: wine.image)
-        //bottleButton.setImage(image, for: UIControlState())
+        
+        let urlString = "https://villaggio-4e2e.restdb.io/media/" + (wine.image?[0])!
+        let url = NSURL(string: urlString)
+        let imgResource =  ImageResource(downloadURL: url as! URL)
+        bottleButton.kf.setImage(with: imgResource, for: UIControlState.normal)
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: bottleButton)
 
         // Do any additional setup after loading the view.
