@@ -7,5 +7,7 @@ target 'WineList' do
     pod 'Alamofire'
     pod 'AlamofireObjectMapper'
     pod 'Kingfisher'
+    pod 'Popover'
+    pod 'PopoverSwift'
 end
 

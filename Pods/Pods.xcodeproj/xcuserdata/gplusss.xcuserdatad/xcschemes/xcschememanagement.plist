@@ -29,10 +29,30 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Popover.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>PopoverSwift.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
 		<key>2F5622F3B18DF497981AB58C6D1FC72F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>3D4033C4BA2203A28E42ED8DEFF5BD82</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>7E398A7D4A2CBE5EE384B887A390A22C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -47,7 +67,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B1F2D9237144582161C7CF4F7490FFAA</key>
+		<key>C120D6237CE8AD762B9CF1C13DF0A47C</key>
 		<dict>
 			<key>primary</key>
 			<true/>

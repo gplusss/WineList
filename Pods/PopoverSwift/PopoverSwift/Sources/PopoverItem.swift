@@ -1,10 +1,9 @@
 //
-//  RequrstModifier.swift
-//  Kingfisher
+//  PopoverItem.swift
+//  PopoverSwift
 //
-//  Created by Wei Wang on 2016/09/05.
-//
-//  Copyright (c) 2016 Wei Wang <onevcat@gmail.com>
+//  Created by Moch Xiao on 3/18/16.
+//  Copyright © @2016 Moch Xiao (http://mochxiao.com).
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -23,31 +22,28 @@
 //  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
+//
 
 import Foundation
 
-/// Request modifier of image downloader.
-public protocol ImageDownloadRequestModifier {
-    func modified(for request: URLRequest) -> URLRequest?
-}
+public final class PopoverItem {
+    public let title: String
+    public let titleColor: UIColor
+    public let image: UIImage?
+    public let handler: ((PopoverItem) -> Void)?
+    var coverColor: UIColor?
+    var textColor: UIColor?
+    
+    public init(title: String, titleColor: UIColor = UIColor.black, image: UIImage? = nil, handler: ((PopoverItem) -> Void)? = nil) {
+        self.title = title
+        self.titleColor = titleColor
+        self.image = image
+        self.handler = handler
+    }
 
-struct NoModifier: ImageDownloadRequestModifier {
-    static let `default` = NoModifier()
-    private init() {}
-    func modified(for request: URLRequest) -> URLRequest? {
-        return request
+#if DEBUG
+    deinit {
+        debugPrint("\(#file):\(#line):\(type(of: self)):\(#function)")
     }
-}
-
-public struct AnyModifier: ImageDownloadRequestModifier {
-    
-    let block: (URLRequest) -> URLRequest?
-    
-    public func modified(for request: URLRequest) -> URLRequest? {
-        return block(request)
-    }
-    
-    public init(modify: @escaping (URLRequest) -> URLRequest? ) {
-        block = modify
-    }
+#endif
 }

@@ -121,6 +121,7 @@ class WinesViewController: UITableViewController {
         let imgResource =  ImageResource(downloadURL: url as! URL)
         
         cell.imageLabel?.kf.setImage(with: imgResource)
+
         
         
         return cell

@@ -8,17 +8,23 @@
 
 import UIKit
 import Kingfisher
+import Popover
+import PopoverSwift
 
 class DetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet var tableview:UITableView!
+    @IBOutlet weak var imageView: UIBarButtonItem!
     
     var wine:Wine!
+    let imageForPopover = UIImage(named: "4324")
+    let popover = Popover()
+
     
     lazy var bottleButton: UIButton = {
         let button = UIButton(type: .custom)
         button.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
-        //button.addTarget(self, action: #selector(bottleImagePressed), for: .touchUpInside)
+        button.addTarget(self, action: #selector(showPopover), for: .touchUpInside)
         button.imageView?.contentMode = .scaleAspectFit
         button.backgroundColor = UIColor.white
         button.layer.cornerRadius = button.frame.size.width / 2
@@ -26,26 +32,35 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
         return button
     }()
     
-    
-    @IBOutlet weak var imageView: UIBarButtonItem!
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        title = wine.title()
-        
-        self.tableview.rowHeight = UITableViewAutomaticDimension
-        self.tableview.estimatedRowHeight = 36
-//          tableView.estimatedRowHeight = 36
-//          tableView.rowHeight = UITableViewAutomaticDimension
-        
+  
+    func image() {
         let urlString = "https://villaggio-4e2e.restdb.io/media/" + (wine.image?[0])!
         let url = NSURL(string: urlString)
         let imgResource =  ImageResource(downloadURL: url as! URL)
         bottleButton.kf.setImage(with: imgResource, for: UIControlState.normal)
+    }
+    
+    func showPopover() {
+        let startPoint = CGPoint(x: self.view.frame.width - 60, y: 55)
+        let aView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 350))
+        
+        popover.show(aView, point: startPoint)
+        //popover.show(aView, fromView: bottleButton)
+        let item = PopoverItem(title: "发起群聊", image: imageForPopover)
+        let controller = PopoverController(items: [item], fromView: bottleButton, direction: .down, style: .withImage)
+        //popover(controller)
+        
+        
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        title = wine.title()
+        image()
+        self.tableview.rowHeight = UITableViewAutomaticDimension
+        self.tableview.estimatedRowHeight = 36
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: bottleButton)
         
-
-        // Do any additional setup after loading the view.
     }
     
     override func didReceiveMemoryWarning() {
